@@ -1,0 +1,19 @@
+{% include "header.html" %}
+
+<h1>Добавить книгу в корзину</h1>
+
+
+{% block content %}
+  <h1>Добавить товар в корзину</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'catalog:basket_list' %}"><button type="submit">Добавить</button></a>
+  </form>
+{% endblock %}
+
+
+<a href="{% url 'catalog:basket_list' %}">Мои заказы</a>
+
+{% include "footer.html" %}
+

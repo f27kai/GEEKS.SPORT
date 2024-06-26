@@ -1,0 +1,36 @@
+{% load static %}
+{% include 'header.html' %}
+
+{% block content %}
+  <h1>Моя корзина</h1>
+
+  {% if baskets %}
+    <table>
+      <thead>
+        <tr>
+          <th>Товар</th>
+          <th>Количество</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for basket in baskets %}
+          <tr>
+            <td><img src="{{ basket.book.img.url }}" alt="{{ basket.book.title }}" style="width:50px;height:50px;"></td>
+            <td>{{ basket.quantity }}</td>
+            <td>
+              <a href="{% url 'catalog:edit_basket' basket.pk %}">Редактировать</a>
+              <a href="{% url 'catalog:delete_basket' basket.pk %}">Удалить</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Ваша корзина пуста.</p>
+  {% endif %}
+
+  <a href="{% url 'catalog:product_list' %}">Вернуться к каталогу</a>
+{% endblock %}
+
+{% include 'footer.html' %}

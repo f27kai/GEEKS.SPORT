@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+
+{% block title %}
+  Редактировать товар в корзине
+{% endblock %}
+
+{% block content %}
+  <h1>Редактировать товар в корзине</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить изменения</button>
+  </form>
+  <a href="{% url 'catalog:basket_list' %}">Отмена</a>
+{% endblock %}
+
+
+{% include 'footer.html' %}

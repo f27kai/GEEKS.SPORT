@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+
+{% block content %}
+  <h1>Каталог товаров</h1>
+  <ul>
+    {% for product in products %}
+      <li>
+        <h6>{{ product.name }}</h6>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 100px; max-height: 100px;">
+        <p>Цена: {{ product.price }}</p>
+        <a href="{% url 'catalog:product_detail' product.pk %}">Подробнее</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+
+{% include 'footer.html' %}

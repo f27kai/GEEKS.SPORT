@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+
+{% block content %}
+  <h1>Подтверждение удаления товара из корзины</h1>
+
+  <p>Вы уверены, что хотите удалить товар "{{ basket.product.name }}" из корзины?</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'catalog:basket_list' %}">Отмена</a>
+  </form>
+{% endblock %}
+
+{% include 'footer.html' %}
