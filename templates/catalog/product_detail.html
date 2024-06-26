@@ -15,12 +15,6 @@
   </ul>
   <a href="{% url 'catalog:add_review' product.pk %}">Добавить отзыв</a>
 
-  <h2>Добавить в корзину</h2>
-  <form method="post" action="{% url 'catalog:add_to_basket' product.pk %}">
-    {% csrf_token %}
-    {{ basket_form.as_p }}
-    <button type="submit">Добавить</button>
-  </form>
 {% endblock %}
 
 {% include 'footer.html' %}
